@@ -24,11 +24,12 @@ public class Money implements Expression {
         return new Money(amount, "CHF");
     }
 
-    public Money times(int multiplier) {
+    public Expression times(int multiplier) {
         return new Money(amount * multiplier, currency);
     }
 
-    public Expression plus(Money added) {
+    @Override
+    public Expression plus(Expression added) {
         return new Sum(this, added);
     }
 
